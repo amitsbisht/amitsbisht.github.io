@@ -1,6 +1,10 @@
 import "./style.css";
 
 (function () {
+	window.onload = () => {
+		setTimeout(() => document.body.classList.remove("blurred"), 800);
+	};
+
 	const menuToggler = document.querySelector(".menu-toggler");
 	const headerMenu = document.querySelector("header nav ul");
 	if (menuToggler) {

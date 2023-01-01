@@ -29,6 +29,34 @@ img {
 	text-align: center;
 }
 
+body.blurred::before {
+	content: "Loading...";
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #fff;
+	font-size: 90px;
+	z-index: 100;
+}
+
+body.blurred::after {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000000; /* fallback for old browsers */
+	background: -webkit-linear-gradient(45deg, #434343, #000000); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+		45deg,
+		#434343,
+		#000000
+	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	z-index: 99;
+}
+
 header {
 	background: #f2f2f2;
 	padding: 15px 0;
@@ -157,6 +185,16 @@ section {
 .about-left-col h2 {
 	font-size: 36px;
 	margin-bottom: 0;
+	font-weight: 400;
+}
+
+.about-left-col h3 {
+	font-size: 28px;
+}
+
+.about-left-col h2 span {
+	font-weight: 700;
+	font-style: italic;
 }
 
 .about-left-col p {
