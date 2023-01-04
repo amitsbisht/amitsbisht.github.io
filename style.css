@@ -9,8 +9,29 @@ html {
 }
 
 body {
+	--primary-bg-color: #fff;
+	--secondary-bg-color: #f2f2f2;
+	--tertiary-bg-color: #dcdcdc;
+	--text-color: #000;
+	--btn-bg-color: var(--text-color);
+	--btn-text-color: var(--primary-bg-color);
+	--btn-hover-bg-color: #333;
+
 	margin: 0;
+	color: var(--text-color);
+	background-color: var(--primary-bg-color);
 	font-family: "Ubuntu", sans-serif;
+	transition: all 0.4s ease-in-out;
+}
+
+body.dark-theme {
+	--primary-bg-color: #0f0f0f;
+	--secondary-bg-color: #010101;
+	--tertiary-bg-color: #1b1e2e;
+	--text-color: #3f51b5;
+	--btn-bg-color: var(--text-color);
+	--btn-text-color: var(--primary-bg-color);
+	--btn-hover-bg-color: #f2f2f2;
 }
 
 img {
@@ -35,7 +56,7 @@ body.blurred::before {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	color: #fff;
+	color: var(--primary-bg-color);
 	font-size: 90px;
 	z-index: 100;
 }
@@ -47,7 +68,7 @@ body.blurred::after {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: #000000; /* fallback for old browsers */
+	background: var(--text-color); /* fallback for old browsers */
 	background: -webkit-linear-gradient(45deg, #434343, #000000); /* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(
 		45deg,
@@ -58,7 +79,7 @@ body.blurred::after {
 }
 
 header {
-	background: #f2f2f2;
+	background: var(--secondary-bg-color);
 	padding: 15px 0;
 	position: sticky;
 	top: 0;
@@ -74,7 +95,7 @@ header nav {
 }
 
 header nav h1 a {
-	color: #000000;
+	color: var(--text-color);
 }
 
 header nav ul {
@@ -83,7 +104,7 @@ header nav ul {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: #fff;
+	background: var(--primary-bg-color);
 	padding: 50px 0;
 	flex-direction: column;
 	align-items: center;
@@ -106,18 +127,19 @@ header nav ul li {
 }
 
 header nav ul li a {
-	color: #3f3f3f;
+	color: var(--text-color);
+	opacity: 0.8;
 	text-decoration: none;
 	transition: all 0.3s ease-in-out;
 }
 
 header nav ul li a:hover {
-	color: #191919;
+	opacity: 1;
 }
 
 header nav ul li a.menu-btn {
-	background: #000000;
-	color: #fff;
+	background: var(--text-color);
+	color: var(--primary-bg-color);
 	text-decoration: none;
 	padding: 12px 30px;
 	border-radius: 8px;
@@ -125,8 +147,8 @@ header nav ul li a.menu-btn {
 }
 
 header nav ul li a.menu-btn:hover {
-	background: #333;
-	color: #f2f2f2;
+	background: var(--btn-hover-bg-color);
+	color: var(--secondary-bg-color);
 }
 
 .menu-toggler {
@@ -134,6 +156,7 @@ header nav ul li a.menu-btn:hover {
 	height: 30px;
 	position: relative;
 	z-index: 9;
+	cursor: pointer;
 }
 
 .menu-toggler span::before {
@@ -143,7 +166,7 @@ header nav ul li a.menu-btn:hover {
 	left: 0;
 	width: 100%;
 	height: 3px;
-	background: black;
+	background: var(--btn-bg-color);
 	transition: all 0.3s ease-in-out;
 }
 
@@ -167,6 +190,24 @@ header nav ul li a.menu-btn:hover {
 .menu-toggler.close-menu span:nth-child(3)::before {
 	top: 50%;
 	transform: translateY(-50%) rotate(130deg);
+}
+
+.dark-theme-toggler button {
+	cursor: pointer;
+	border: none;
+	background: none;
+}
+
+body .moon-icon {
+	display: none;
+}
+
+body.dark-theme .sun-icon {
+	display: none;
+}
+
+body.dark-theme .moon-icon {
+	display: block;
 }
 
 section {
@@ -203,8 +244,8 @@ section {
 }
 
 a.btn {
-	background: #000000;
-	color: #fff;
+	background: var(--text-color);
+	color: var(--primary-bg-color);
 	text-decoration: none;
 	padding: 12px 30px;
 	display: inline-block;
@@ -213,8 +254,8 @@ a.btn {
 }
 
 a.btn:hover {
-	background: #333;
-	color: #f2f2f2;
+	background: var(--btn-hover-bg-color);
+	color: var(--secondary-bg-color);
 }
 
 .about-right-col {
@@ -222,7 +263,7 @@ a.btn:hover {
 }
 
 .skills-wrapper {
-	background: #f2f2f2;
+	background: var(--secondary-bg-color);
 }
 
 .skills-wrapper .centered-block {
@@ -257,7 +298,7 @@ a.btn:hover {
 }
 
 .skill-wrap h4 {
-	background: #d1d1d1;
+	background: var(--tertiary-bg-color);
 	margin: 0;
 	padding: 20px;
 }
@@ -292,7 +333,7 @@ a.btn:hover {
 
 .skill-wrap ul li span::before {
 	content: attr(data-label);
-	color: #000;
+	color: var(--text-color);
 	font-size: 18px;
 	font-weight: 700;
 	font-family: "Ubuntu", sans-serif;
@@ -304,11 +345,11 @@ a.btn:hover {
 }
 
 .work-item a {
-	color: #000;
+	color: var(--text-color);
 }
 
 .contact-wrapper {
-	background: #dcdcdc;
+	background: var(--tertiary-bg-color);
 }
 
 ul.contact-links {
@@ -329,10 +370,14 @@ ul.contact-links img {
 
 footer {
 	padding: 20px 0;
-	background: #f2f2f2;
+	background: var(--secondary-bg-color);
 }
 
 @media screen and (min-width: 768px) {
+	.dark-theme-toggler {
+		border-left: 1px solid var(--text-color);
+	}
+
 	header .menu-toggler {
 		display: none;
 	}

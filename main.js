@@ -5,6 +5,19 @@ import "./style.css";
 		setTimeout(() => document.body.classList.remove("blurred"), 800);
 	};
 
+	// enable dark mode & save to localstorage
+	const darkModeBtn = document.querySelector(".dark-theme-btn");
+	let darkModeValue = localStorage.getItem("dark-mode");
+	if (darkModeValue === "enabled") {
+		document.body.classList.add("dark-theme");
+	}
+
+	darkModeBtn.addEventListener("click", () => {
+		let val = document.body.classList.contains("dark-theme") ? null : "enabled";
+		darkModeValue = localStorage.setItem("dark-mode", val);
+		document.body.classList.toggle("dark-theme");
+	});
+
 	const menuToggler = document.querySelector(".menu-toggler");
 	const headerMenu = document.querySelector("header nav ul");
 	if (menuToggler) {
